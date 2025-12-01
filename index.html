@@ -4,52 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: skyblue;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-        #calculator {
-            width: 200px;
-            background-color: #87CEEB;
-            padding: 10px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        #display {
-            width: 90%;
-            height: 50px;
-            background-color: white;
-            text-align: right;
-            line-height: 50px;
-            font-size: 24px;
-            border-radius: 5px;
-            padding: 0 10px;
-            margin-bottom: 10px;
-        }
-        button {
-            width: 50px;
-            height: 50px;
-            margin: 5px;
-            font-size: 20px;
-            background-color: #f1f1f1;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        button:active {
-            background-color: #ddd;
-        }
-        .row {
-            display: flex;
-            justify-content: space-between;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
@@ -81,50 +36,7 @@
     </div>
 </div>
 
-<script>
-    let current = '';
-    let previous = '';
-    let operator = null;
-
-    function handleKey(key) {
-        const display = document.getElementById('display');
-
-        if (key === 'C') {
-            current = '';
-        } else if (['/', '*', '+', '-'].includes(key)) {
-            if (operator === null) {
-                operator = key;
-                previous = current;
-                current = '';
-            }
-        } else if (key === '=') {
-            let l = parseFloat(previous);
-            let r = parseFloat(current);
-            if (operator === '+') {
-                current = (l + r).toString();
-            } else if (operator === '-') {
-                current = (l - r).toString();
-            } else if (operator === '*') {
-                current = (l * r).toString();
-            } else if (operator === '/') {
-                current = (l / r).toString();
-            }
-            operator = null;
-        } else {
-            current = current + key;
-        }
-
-        display.textContent = current;
-    }
-
-    // Allow keypress events as well
-    document.addEventListener('keydown', function(event) {
-        const key = event.key;
-        if (key >= '0' && key <= '9' || ['+', '-', '*', '/', 'C', '=', '.'].includes(key)) {
-            handleKey(key);
-        }
-    });
-</script>
+<script src="script.js" defer></script>
 
 </body>
 </html>
